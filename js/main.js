@@ -1,27 +1,33 @@
 (function () {
   "use strict";
 
-  // on page load...
-    moveProgressBar();
-    // on browser resize...
-    $(window).resize(function() {
-        moveProgressBar();
-    });
+  var hours = document.getElementById('hours');
+  var mintues = document.getElementById('minutes');
+  var seconds = document.getElementById('seconds');
+  var bar = document.getElementById('inner-bar');
+  var currentDate = new Date();
+  var currentHours = currentDate.getHours();
+  var currentMinutes = currentDate.getMinutes();
+  var currentSeconds = currentDate.getSeconds();
 
-    // SIGNATURE PROGRESS
-    function moveProgressBar() {
-      console.log("moveProgressBar");
-        var getPercent = ($('.progress-wrap').data('progress-percent') / 100);
-        var getProgressWrapWidth = $('.progress-wrap').width();
-        var progressTotal = getPercent * getProgressWrapWidth;
-        var animationLength = 2500;
+  function displayTime (){
+    var currentDate = new Date();
+    var currentHours = currentDate.getHours();
+    var currentMinutes = currentDate.getMinutes();
+    var currentSeconds = currentDate.getSeconds();
+    var minutePercentage = ((currentSeconds / 59) * 100);
+    bar.style.width = minutePercentage + "%";
+    hours.textContent = (0 + currentHours);
+    minutes.textContent = (0 + currentMinutes);
+    seconds.textContent = (0 + currentSeconds);
+    console.log(minutePercentage);
+  }
 
-        // on page load, animate percentage bar to data percentage length
-        // .stop() used to prevent animation queueing
-        $('.progress-bar').stop().animate({
-            left: progressTotal
-        }, animationLength);
-    }
+
+  /*((v2 / v1) * 100).toFixed(2);*/
+
+  window.setInterval(displayTime, 1000);
+
 
 
 }())
