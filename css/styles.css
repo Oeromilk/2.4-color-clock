@@ -17,13 +17,14 @@ h1 {
   content: ":"; }
 
 .progress-bar {
-  border-color: #ddd;
+  border-color: white;
   width: 50%;
   margin: 0 auto; }
 
 .inner-progress-bar {
-  background-color: #FD8000;
+  background-color: white;
   height: 10px;
-  margin: auto; }
+  margin: auto;
+  transition: width 1s linear; }
 
 /*# sourceMappingURL=styles.css.map */
